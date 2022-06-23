@@ -8,26 +8,28 @@ namespace Custom\HelloWorld\Controller\Index;
 
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\View\Result\PageFactory;
 
 class Index implements \Magento\Framework\App\ActionInterface
 {
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @var PageFactory
      */
     private $pageFactory;
     /**
-     * @var \Magento\Framework\Controller\ResultFactory
+     * @var ResultFactory
      */
     private $resultFactory;
 
     /**
      * Index constructor.
-     * @param \Magento\Framework\View\Result\PageFactory $pageFactory
-     * @param \Magento\Framework\Controller\ResultFactory $resultFactory
+     * @param PageFactory $pageFactory
+     * @param ResultFactory $resultFactory
      */
     public function __construct(
-        \Magento\Framework\View\Result\PageFactory $pageFactory,
-        \Magento\Framework\Controller\ResultFactory $resultFactory
+        PageFactory $pageFactory,
+        ResultFactory $resultFactory
     ) {
         $this->pageFactory = $pageFactory;
         $this->resultFactory = $resultFactory;
@@ -36,11 +38,11 @@ class Index implements \Magento\Framework\App\ActionInterface
     /**
      * Execute
      *
-     * @return \Magento\Framework\Controller\ResultInterface
+     * @return ResultInterface
      */
     public function execute()
     {
-        $result = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_RAW);
+        $result = $this->resultFactory->create(ResultFactory::TYPE_RAW);
         $result->setContents('Hello World');
         return $result;
     }
