@@ -7,21 +7,17 @@
 namespace Sachin\Assignment5\Plugin;
 
 use Magento\Checkout\Controller\Cart\CouponPost as Subject;
-use Magento\Framework\App\Action\HttpPostActionInterface;
 
 class CouponPost extends Subject
 {
     /**
-     * Arround Execute
+     * Around Execute
      *
      * @param Subject $subject
-     * @param callable $proceed
      */
-    public function aroundExecute(Subject $subject, callable $proceed)
+    public function aroundExecute(Subject $subject)
     {
-        $couponCode = $subject->getRequest()->getParam('remove') == 1
-            ? ''
-            : trim($subject->getRequest()->getParam('coupon_code'));
+        $couponCode = trim($subject->getRequest()->getParam('coupon_code'));
 
         if ($couponCode) {
             $subject->messageManager->addErrorMessage(

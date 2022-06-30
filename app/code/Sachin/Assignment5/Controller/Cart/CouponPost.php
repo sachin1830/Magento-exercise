@@ -51,13 +51,11 @@ class CouponPost extends MagentoCouponPost implements HttpPostActionInterface
     /**
      * Execute
      *
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
-     */
+     * @return \Magento\Framework\Controller\Result\Redirect
+     * */
     public function execute()
     {
-        $couponCode = $this->getRequest()->getParam('remove') == 1
-            ? ''
-            : trim($this->getRequest()->getParam('coupon_code'));
+        $couponCode = trim($this->getRequest()->getParam('coupon_code'));
 
         if ($couponCode) {
             $this->messageManager->addErrorMessage(
