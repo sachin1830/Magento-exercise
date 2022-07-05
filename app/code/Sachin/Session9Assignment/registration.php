@@ -6,6 +6,6 @@
  */
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Unit3_TextBlockTest',
+    'Sachin_Session9Assignment',
     __DIR__
 );
