@@ -42,14 +42,18 @@ class AddTableData implements DataPatchInterface
                   'entity_name' => 'sachin kumar biswal',
                   'age' => 23,
                   'height' => 5.6,
-                  'description' => 'Hi i am sachin'
+                  'short_description' => 'Hi i am sachin',
+                  'long_description' => 'Hi, i am sachin i am from odisha , i am 23 years old.',
+                  'is_employee' => 1
               ],
                 [
                 'entity_name' => 'Manisha Pattanayak',
                 'age' => 22,
                 'height' => 5.4,
-                'description' => 'Hi i am manisha'
-              ]
+                'short_description' => 'Hi i am manisha ',
+                    'long_description' => 'Hi, i am manisha i am from odisha , i am 22 years old.',
+                    'is_employee' => 1
+                ]
             ]
         );
     }

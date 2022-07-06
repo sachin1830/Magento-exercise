@@ -62,7 +62,9 @@ class Index implements ActionInterface
                     'name' => $entity->getName(),
                     'age' => $entity->getAge(),
                     'height' => $entity->getHeight(),
-                    'description' => $entity->getDescription(),
+                    'long_description' => $entity->getLongDescription(),
+                    'short_description' => $entity->getShortDesciption(),
+                    'is_employee' =>$entity->isEmployee(),
                     'created At' => $entity->getCreatedAt()
                 ];
             }
@@ -79,7 +81,9 @@ class Index implements ActionInterface
                     'name' => $result->getName(),
                     'age' => $result->getAge(),
                     'height' => $result->getHeight(),
-                    'description' => $result->getDescription(),
+                    'long_description' => $result->getLongDescription(),
+                    'short_description' => $result->getShortDesciption(),
+                    'is_employee' => $result->isEmployee(),
                     'created At' => $result->getCreatedAt()
                 ]);
             }

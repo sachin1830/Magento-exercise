@@ -33,7 +33,7 @@ class SachinEntity extends AbstractModel implements SachinEntityInterface
      */
     public function getCreatedAt()
     {
-        return $this->getData(self::CREATEDAT);
+        return $this->getData(self::CREATED_AT);
     }
 
     /**
@@ -57,12 +57,32 @@ class SachinEntity extends AbstractModel implements SachinEntityInterface
     }
 
     /**
-     * Get description
+     * Get long description
      *
      * @return string
      */
-    public function getDescription()
+    public function getLongDescription()
     {
-        return $this->getData(self::DESCRIPTION);
+        return $this->getData(self::LONG_DESCRIPTION);
+    }
+
+    /**
+     * Get short description
+     *
+     * @return string
+     */
+    public function getShortDesciption()
+    {
+        return $this->getData(self::SHORT_DESCRIPTION);
+    }
+
+    /**
+     * Is Employeed
+     *
+     * @return int
+     */
+    public function isEmployee()
+    {
+        return $this->getData(self::IS_EMPLOYEE);
     }
 }

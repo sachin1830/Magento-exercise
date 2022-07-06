@@ -12,8 +12,11 @@ interface SachinEntityInterface
     public const NAME = 'entity_name';
     public const AGE = 'age';
     public const HEIGHT = 'height';
-    public const DESCRIPTION = 'description';
-    public const CREATEDAT = 'created_at';
+    public const CREATED_AT = 'created_at';
+    public const SHORT_DESCRIPTION = 'short_description';
+    public const LONG_DESCRIPTION = 'long_description';
+    public const IS_EMPLOYEE = 'is_employee';
+
     /**
      * Get ID
      *
@@ -47,9 +50,23 @@ interface SachinEntityInterface
     public function getHeight();
 
     /**
-     * Get Description
+     * Get Long Description
      *
      * @return string
      */
-    public function getDescription();
+    public function getLongDescription();
+
+    /**
+     * Get Short Description
+     *
+     * @return string
+     */
+    public function getShortDesciption();
+
+    /**
+     * Is Employeed
+     *
+     * @return int
+     */
+    public function isEmployee();
 }

@@ -11,16 +11,16 @@
         <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"
                 comment="Entity ID"/>
         <column xsi:type="varchar" name="entity_name" nullable="false" comment="entity name"/>
-        <column xsi:type="smallint" name="age" unsigned="false" nullable="false" default="0" comment="entity age"/>
-        <column xsi:type="decimal" name="height" scale="2" precision="2" unsigned="false"
+        <column xsi:type="tinyint" name="age" unsigned="true" nullable="false" default="0" comment="entity age"/>
+        <column xsi:type="decimal" name="height" precision="4" scale="2" unsigned="true"
                 nullable="false" default="0.0" comment="entity height"/>
-        <column xsi:type="text" name="description" nullable="false" comment="entity description"/>
+        <column xsi:type="text" name="short_description" nullable="false" comment="entity short description"/>
+        <column xsi:type="longtext" name="long_description" nullable="false" comment="entity long description"/>
+        <column xsi:type="boolean" name="is_employee" nullable="false" default="0" comment="entity is employed"/>
         <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false"
                 default="CURRENT_TIMESTAMP" comment="Creation Time"/>
-
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="entity_id"/>
         </constraint>
-
     </table>
 </schema>
