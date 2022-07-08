@@ -1,0 +1,18 @@
+{
+    "sachin_entity": {
+        "column": {
+            "entity_id": true,
+            "entity_name": true,
+            "age": true,
+            "height": true,
+            "description": true,
+            "created_at": true,
+            "short_description": true,
+            "long_description": true,
+            "is_employee": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

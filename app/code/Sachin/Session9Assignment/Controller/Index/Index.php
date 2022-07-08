@@ -52,40 +52,23 @@ class Index implements ActionInterface
     public function execute()
     {
         $id = $this->request->getParam('id');
+        $ids = explode(',', $id);
         $resultJson = $this->jsonFactory->create();
-        if (empty($id)) {
+        if (!empty($ids) && count($ids)>1) {
+            $entities = $this->entityRepository->getEnityRows($ids);
+                $resultJson->setData($entities);
+                return $resultJson;
+        } elseif (empty($id)) {
             $entityCollection  = $this->entityRepository->getCollection();
-            $entities = [];
-            foreach ($entityCollection as $entity) {
-                $entities[] = [
-                    'id' =>$entity->getId(),
-                    'name' => $entity->getName(),
-                    'age' => $entity->getAge(),
-                    'height' => $entity->getHeight(),
-                    'long_description' => $entity->getLongDescription(),
-                    'short_description' => $entity->getShortDesciption(),
-                    'is_employee' =>$entity->isEmployee(),
-                    'created At' => $entity->getCreatedAt()
-                ];
-            }
-            $resultJson->setData($entities);
+            $resultJson->setData($entityCollection->getData());
             return $resultJson;
         } else {
             $result = $this->entityRepository->getById($id);
-            if (!$result->getId()) {
+            if (empty($result)) {
                 throw new NoSuchEntityException(__('Unable to find the entity with this id.'));
 
             } else {
-                return $resultJson->setData([
-                    'id' => $result->getId(),
-                    'name' => $result->getName(),
-                    'age' => $result->getAge(),
-                    'height' => $result->getHeight(),
-                    'long_description' => $result->getLongDescription(),
-                    'short_description' => $result->getShortDesciption(),
-                    'is_employee' => $result->isEmployee(),
-                    'created At' => $result->getCreatedAt()
-                ]);
+                return $resultJson->setData($result);
             }
         }
     }

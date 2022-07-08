@@ -23,4 +23,22 @@
             <column name="entity_id"/>
         </constraint>
     </table>
+
+    <table name="sachin_address" resource="default" engine="innodb" comment="address table">
+        <column xsi:type="int" name="address_id" unsigned="true" nullable="false" identity="true"
+                comment="address id"/>
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false"  identity="false" comment="entity id"/>
+        <column xsi:type="varchar" name="country" nullable="false" comment="address country"/>
+        <column xsi:type="varchar" name="city" nullable="false" comment="address city"/>
+        <column xsi:type="varchar" name="state" nullable="false" comment="address state"/>
+        <column xsi:type="varchar" name="street" nullable="false" comment="address street"/>
+        <column xsi:type="varchar" name="zip" nullable="false" comment="address zip"/>
+        <column xsi:type="varchar" name="phone" nullable="false" comment="phone number"/>
+        <constraint xsi:type="foreign" referenceId="SACHIN_ADDRESS_ENTITY_ID_SACHIN_ENTITY_ENTITY_ID"
+                    table="sachin_address" column="entity_id" referenceTable="sachin_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="address_id"/>
+        </constraint>
+    </table>
 </schema>

@@ -11,6 +11,7 @@ use Sachin\Session9Assignment\Model\ResourceModel\SachinCollection\Collection;
 
 interface SachinEntityRepositoryInterface
 {
+    public const SACHIN_ENTITY = 'sachin_entity';
     /**
      * Get entity by id
      *
@@ -25,4 +26,12 @@ interface SachinEntityRepositoryInterface
      * @return Collection
      */
     public function getCollection();
+
+    /**
+     * Get Entity rows
+     *
+     * @param array $entityIds
+     * @return array
+     */
+    public function getEnityRows($entityIds);
 }
