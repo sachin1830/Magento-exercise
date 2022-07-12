@@ -7,6 +7,14 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Sachin\Session9Assignment\Api\Data\SachinEntityInterface" type="Sachin\Session9Assignment\Model\SachinEntity" />
+    <preference for="Sachin\Session9Assignment\Api\Data\AddressEntityInterface" type="Sachin\Session9Assignment\Model\AddressEntity" />
     <preference for="Sachin\Session9Assignment\Api\SachinEntityRepositoryInterface" type="Sachin\Session9Assignment\Model\SachinEntityRepository" />
+    <preference for="Sachin\Session9Assignment\Api\AddressEntityRepositoryInterface" type="Sachin\Session9Assignment\Model\AddressEntityRepository" />
+    <type name="Sachin\Session9Assignment\Api\SachinEntityRepositoryInterface">
+        <plugin name="catalogLog" type="Sachin\Session9Assignment\Plugin\AddressLoad" />
+    </type>
+    <type name="Sachin\Session9Assignment\Api\AddressEntityRepositoryInterface">
+        <plugin name="catalogLog" type="Sachin\Session9Assignment\Plugin\EntityLoad" />
+    </type>
 </config>
 

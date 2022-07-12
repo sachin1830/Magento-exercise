@@ -39,7 +39,7 @@ class AddTableDataAddress implements DataPatchInterface
             $setup->getTable('sachin_address'),
             [
                 [
-                    'entity_id' => 17,
+                    'entity_id' => 19,
                     'country' => 'India',
                     'city' => 'Bhubaneswar',
                     'state' => 'Odisha',
@@ -49,7 +49,7 @@ class AddTableDataAddress implements DataPatchInterface
 
                 ],
                 [
-                    'entity_id' => 17,
+                    'entity_id' => 19,
                     'country' => 'India',
                     'city' => 'Bangalore',
                     'state' => 'Karnataka',

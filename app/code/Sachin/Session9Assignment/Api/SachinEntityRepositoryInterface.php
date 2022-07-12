@@ -6,7 +6,7 @@
  */
 namespace Sachin\Session9Assignment\Api;
 
-use Sachin\Session9Assignment\Model\SachinEntity;
+use Sachin\Session9Assignment\Api\Data\SachinEntityInterface;
 use Sachin\Session9Assignment\Model\ResourceModel\SachinCollection\Collection;
 
 interface SachinEntityRepositoryInterface
@@ -16,7 +16,7 @@ interface SachinEntityRepositoryInterface
      * Get entity by id
      *
      * @param string $entityId
-     * @return SachinEntity;
+     * @return SachinEntityInterface
      */
     public function getById($entityId);
 
@@ -34,4 +34,12 @@ interface SachinEntityRepositoryInterface
      * @return array
      */
     public function getEnityRows($entityIds);
+
+    /**
+     * Delete entity by id
+     *
+     * @param string $entityId
+     * @return mixed
+     */
+    public function deleteById($entityId);
 }
