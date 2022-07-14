@@ -1,9 +1,12 @@
 <?php
-
+/**
+ *
+ * Copyright © Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
 namespace Sachin\Session9Assignment\Model;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
-use Magento\Framework\Model\AbstractModel;
 use Sachin\Session9Assignment\Api\Data\AddressEntityExtensionInterface;
 use Sachin\Session9Assignment\Api\Data\AddressEntityInterface;
 use Sachin\Session9Assignment\Model\ResourceModel\AddressEntity as ResourceModel;

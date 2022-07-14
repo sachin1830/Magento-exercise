@@ -10,6 +10,7 @@
     <preference for="Sachin\Session9Assignment\Api\Data\AddressEntityInterface" type="Sachin\Session9Assignment\Model\AddressEntity" />
     <preference for="Sachin\Session9Assignment\Api\SachinEntityRepositoryInterface" type="Sachin\Session9Assignment\Model\SachinEntityRepository" />
     <preference for="Sachin\Session9Assignment\Api\AddressEntityRepositoryInterface" type="Sachin\Session9Assignment\Model\AddressEntityRepository" />
+    <preference for="Sachin\Session9Assignment\Api\Data\AddressEntitySearchResultInterface" type="Sachin\Session9Assignment\Model\AddressEntitySearchResult" />
     <type name="Sachin\Session9Assignment\Api\SachinEntityRepositoryInterface">
         <plugin name="catalogLog" type="Sachin\Session9Assignment\Plugin\AddressLoad" />
     </type>
