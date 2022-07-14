@@ -21,6 +21,36 @@ class AddressEntity extends AbstractExtensibleModel implements AddressEntityInte
         $this->_init(ResourceModel::class);
     }
     /**
+     * Get Id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->getData(self::ID);
+    }
+
+    /**
+     * Set Entity ID
+     *
+     * @param int $entityId
+     * @return $this
+     */
+    public function setEntityId($entityId)
+    {
+        return $this->setData(self::ENTITY_ID, $entityId);
+    }
+
+    /**
+     * Get Entity ID
+     *
+     * @return int
+     */
+    public function getEntityId()
+    {
+        return $this->getData(self::ENTITY_ID);
+    }
+    /**
      * Set Country
      *
      * @param string $country
