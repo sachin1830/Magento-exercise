@@ -1,0 +1,38 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Sachin\Session9Assignment\Block\DisplayBlock $block */
+
+$entites = $block->getEntities()->getItems();
+?>
+<a href="<?= $block->getFormUrl(); ?>">Save Entity</a>
+
+<table>
+    <tr>
+        <th>Entity Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Height</th>
+        <th>Short Description</th>
+        <th>Long Description</th>
+        <th>Is Employee</th>
+        <th>Operation</th>
+    </tr>
+    <?php foreach ($entites as $entity) {?>
+    <tr>
+        <td><?= $entity->getId(); ?></td>
+        <td><?= $entity->getName(); ?></td>
+        <td><?= $entity->getAge(); ?></td>
+        <td><?= $entity->getHeight(); ?></td>
+        <td><?= $entity->getShortDesciption(); ?></td>
+        <td><?= $entity->getLongDescription(); ?></td>
+        <td><?= ($entity->getIsEmployee()) ? "employee" : "not employee" ?></td>
+        <td> <a href="<?= $block->getFormUrl();echo 'id/'.$entity->getId()?>">Edit</a></td>
+        <td> <a style="color: red" href="<?= $block->getDeleteUrl();echo 'id/'.$entity->getId()?>">Delete</a></td>
+    </tr>
+    <?php } ?>
+</table>
+

@@ -1,12 +1,17 @@
 <?php
 namespace Sachin\Session9Assignment\Model;
 
+use Magento\Framework\Api\SearchCriteriaInterface;
+use Sachin\Session9Assignment\Api\Data\SachinEntitySearchResultInterface;
 use Sachin\Session9Assignment\Api\SachinEntityRepositoryInterface;
 use Sachin\Session9Assignment\Model\ResourceModel\SachinEntity as ResourceModel;
 use Sachin\Session9Assignment\Model\SachinEntityFactory as EntityFactory;
+use Sachin\Session9Assignment\Model\ResourceModel\SachinCollection\CollectionFactory;
 use Sachin\Session9Assignment\Model\ResourceModel\SachinCollection\Collection;
 use Magento\Framework\App\ResourceConnection;
 use Sachin\Session9Assignment\Api\Data\SachinEntityInterface;
+use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Sachin\Session9Assignment\Api\Data\SachinEntitySearchResultInterfaceFactory;
 
 class SachinEntityRepository implements SachinEntityRepositoryInterface
 {
@@ -20,40 +25,61 @@ class SachinEntityRepository implements SachinEntityRepositoryInterface
      */
     private SachinEntityFactory $entityFactory;
     /**
-     * @var Collection
+     * @var CollectionFactory
      */
-    private Collection $collection;
+    private CollectionFactory $collectionfactory;
 
     /**
      * @var ResourceConnection
      */
     private ResourceConnection $resourceConnection;
+    /**
+     * @var CollectionProcessorInterface
+     */
+    private CollectionProcessorInterface $collectionProcessor;
+    /**
+     * @var SachinEntitySearchResultInterfaceFactory
+     */
+    private SachinEntitySearchResultInterfaceFactory $entitySearchResulFactory;
+    /**
+     * @var Collection
+     */
+    private Collection $collection;
 
     /**
      * SachinEntityRepository constructor.
      *
      * @param ResourceModel $resourceModel
      * @param SachinEntityFactory $entityFactory
-     * @param Collection $collection
+     * @param CollectionFactory $collectionfactory
      * @param ResourceConnection $resourceConnection
+     * @param CollectionProcessorInterface $collectionProcessor
+     * @param Collection $collection
+     * @param SachinEntitySearchResultInterfaceFactory $entitySearchResulFactory
      */
     public function __construct(
         ResourceModel $resourceModel,
         EntityFactory $entityFactory,
+        CollectionFactory $collectionfactory,
+        ResourceConnection $resourceConnection,
+        CollectionProcessorInterface $collectionProcessor,
         Collection $collection,
-        ResourceConnection $resourceConnection
+        SachinEntitySearchResultInterfaceFactory $entitySearchResulFactory
     ) {
         $this->resouceModel = $resourceModel;
         $this->entityFactory = $entityFactory;
-        $this->collection = $collection;
+        $this->collectionfactory = $collectionfactory;
         $this->resourceConnection = $resourceConnection;
+        $this->collectionProcessor = $collectionProcessor;
+        $this->entitySearchResulFactory = $entitySearchResulFactory;
+        $this->collection = $collection;
     }
 
     /**
      * Get entity by id
      *
      * @param string $entityId
-     * @return SachinEntityInterface|array
+     * @return SachinEntityInterface|null
      */
     public function getById($entityId)
     {
@@ -78,7 +104,7 @@ class SachinEntityRepository implements SachinEntityRepositoryInterface
      */
     public function getCollection()
     {
-        return $entityCollection =  $this->collection->load();
+        return $this->collection->load();
     }
 
     /**
@@ -109,5 +135,39 @@ class SachinEntityRepository implements SachinEntityRepositoryInterface
         $entity = $this->entityFactory->create();
         $this->resouceModel->load($entity, $entityId);
         return $this->resouceModel->delete($entity);
+    }
+
+    /**
+     * Get List
+     *
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return \Sachin\Session9Assignment\Api\Data\SachinEntitySearchResultInterface|void
+     */
+    public function getList(SearchCriteriaInterface $searchCriteria)
+    {
+        $collection = $this->collectionfactory->create();
+        $this->collectionProcessor->process($searchCriteria, $collection);
+        /** @var SachinEntitySearchResultInterface $searchResults */
+        $searchResults = $this->entitySearchResulFactory->create();
+        $searchResults->setSearchCriteria($searchCriteria);
+        $searchResults->setTotalCount($collection->getSize());
+        $searchResults->setItems($collection->getItems());
+        return $searchResults;
+    }
+
+    /**
+     * Save
+     *
+     * @param SachinEntityInterface $entity
+     * @return bool
+     */
+    public function save(SachinEntityInterface $entity)
+    {
+        try {
+            $this->resouceModel->save($entity);
+            return true;
+        } catch (\Exception $exception) {
+            return false;
+        }
     }
 }

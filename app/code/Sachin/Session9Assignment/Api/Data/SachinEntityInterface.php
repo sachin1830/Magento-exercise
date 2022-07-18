@@ -63,14 +63,14 @@ interface SachinEntityInterface extends ExtensibleDataInterface
     /**
      * Get Height
      *
-     * @return float
+     * @return string
      */
     public function getHeight();
 
     /**
      * Set Height
      *
-     * @param float $height
+     * @param string $height
      * @return $this
      */
     public function setHeight($height);

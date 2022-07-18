@@ -11,6 +11,7 @@
     <preference for="Sachin\Session9Assignment\Api\SachinEntityRepositoryInterface" type="Sachin\Session9Assignment\Model\SachinEntityRepository" />
     <preference for="Sachin\Session9Assignment\Api\AddressEntityRepositoryInterface" type="Sachin\Session9Assignment\Model\AddressEntityRepository" />
     <preference for="Sachin\Session9Assignment\Api\Data\AddressEntitySearchResultInterface" type="Sachin\Session9Assignment\Model\AddressEntitySearchResult" />
+    <preference for="Sachin\Session9Assignment\Api\Data\SachinEntitySearchResultInterface" type="Sachin\Session9Assignment\Model\SachinEntitySearchResult" />
     <type name="Sachin\Session9Assignment\Api\SachinEntityRepositoryInterface">
         <plugin name="catalogLog" type="Sachin\Session9Assignment\Plugin\AddressLoad" />
     </type>

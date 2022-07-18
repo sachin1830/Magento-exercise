@@ -75,7 +75,7 @@ class SachinEntity extends AbstractExtensibleModel implements SachinEntityInterf
     /**
      * Get Height
      *
-     * @return float|null
+     * @return string|null
      */
     public function getHeight()
     {
@@ -84,7 +84,7 @@ class SachinEntity extends AbstractExtensibleModel implements SachinEntityInterf
     /**
      * Set Height
      *
-     * @param float $height
+     * @param string $height
      * @return $this
      */
     public function setHeight($height)
@@ -136,7 +136,7 @@ class SachinEntity extends AbstractExtensibleModel implements SachinEntityInterf
      */
     public function getIsEmployee()
     {
-        return $this->getData(self::SHORT_DESCRIPTION);
+        return $this->getData(self::IS_EMPLOYEE);
     }
     /**
      * Set Is Employeed
