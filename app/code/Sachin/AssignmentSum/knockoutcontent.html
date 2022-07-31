@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+    <title>Knockout</title>
+</head>
+<body>
+<div id="main">
+    <label for="first">First Number:</label>
+    <input type="text" id="first" name="first" data-bind="value: first"><br><br>
+
+    <label for="second">Second Number:</label>
+    <input type="text" id="second" name="second" data-bind="value: second"><br><br>
+
+    <input type="submit" value="Sum" id="submit" data-bind="click: calculate"><br><br>
+
+    <label for="result">Result</label><br>
+    <input type="text" id="result" name="result" data-bind="value: result">
+</div>
+</body>
+<script type="text/javascript">
+    jQuery(function() {
+        function SumNumber() {
+            this.first = ko.observable(0);
+            this.second = ko.observable(0);
+            this.result = ko.observable(0);
+            console.log(this.first)
+            this.calculate = function () {
+                this.result(parseInt(this.first()) + parseInt(this.second()));
+            }
+        }
+        ko.applyBindings(new SumNumber());
+    });
+</script>
+</html>
